@@ -3,6 +3,7 @@ class NotesController < ApplicationController
   before_action :set_body
   before_action :set_note, only: %i[show edit update destroy]
   before_action :set_year, only: :index
+  before_action :set_js_variables_for_form, only: %i[new edit]
 
   def index
     @notes = @body.notes.order(noted_at: :desc).noted_in(@year).page params[:page]
@@ -55,8 +56,12 @@ class NotesController < ApplicationController
     @year = params[:year]
   end
 
+  def set_js_variables_for_form
+    gon.picture_size_limit = PictureUploader::SIZE_LIMIT
+  end
+
   def note_params
-    params.require(:note).permit(:detail, :noted_at)
+    params.require(:note).permit(:detail, :noted_at, :picture, :remove_picture)
   end
 
   def find_my_own_body(body_id)
