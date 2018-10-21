@@ -1,9 +1,9 @@
 class BodiesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_body, only: %i[show edit update destroy]
+  before_action :set_bodies, only: %i[index select]
 
   def index
-    @bodies = current_user.family.bodies
   end
 
   def new
@@ -35,10 +35,18 @@ class BodiesController < ApplicationController
     redirect_to family_url, success: 'からだを削除しました'
   end
 
+  def select
+    render 'select_nobody' if @bodies.empty?
+  end
+
   private
 
   def set_body
     @body = current_user.family.bodies.find(params[:id])
+  end
+
+  def set_bodies
+    @bodies = current_user.family.bodies
   end
 
   def body_params

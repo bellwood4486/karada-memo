@@ -1,4 +1,4 @@
-module Bodies::SelectionsHelper
+module BodiesHelper
   def body_select_tag(bodies, options = {})
     select_tag(:bodySelection,
                options_for_select(body_options(bodies)),

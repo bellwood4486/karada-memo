@@ -13,4 +13,18 @@ module ApplicationHelper
 
     html.html_safe
   end
+
+  def new_note_header_link(bodies)
+    if bodies.one?
+      path = new_body_note_path(bodies.first)
+      remote = false
+    else
+      path = select_bodies_path
+      remote = true
+    end
+    link_to path, remote: remote,
+                  class: 'nav-link btn btn-primary text-light', role: 'button' do
+      fa_icon 'edit', text: 'メモする'
+    end
+  end
 end
