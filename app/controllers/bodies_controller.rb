@@ -35,10 +35,6 @@ class BodiesController < ApplicationController
     redirect_to family_url, success: 'からだを削除しました'
   end
 
-  def select
-    render 'select_nobody' if @bodies.empty?
-  end
-
   private
 
   def set_body

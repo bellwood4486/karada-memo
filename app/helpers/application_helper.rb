@@ -19,7 +19,7 @@ module ApplicationHelper
       path = new_body_note_path(bodies.first)
       remote = false
     else
-      path = select_bodies_path
+      path = bodies_path
       remote = true
     end
     link_to path, remote: remote,
