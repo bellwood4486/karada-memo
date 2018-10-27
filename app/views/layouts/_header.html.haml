@@ -35,3 +35,5 @@
             = link_to 'ログイン', new_user_session_path, class: 'nav-link'
 
 #bodySelectionsModalArea
+  - if user_signed_in?
+    = render 'bodies/select_modal'

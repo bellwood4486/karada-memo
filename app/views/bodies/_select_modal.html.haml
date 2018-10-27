@@ -11,7 +11,7 @@
       .modal-body
         .form
           .form-group
-            = body_select_tag @bodies, prompt: '選択してください', class: 'form-control'
+            = body_select_tag current_user.family.bodies, prompt: '選択してください', class: 'form-control'
       .modal-footer
         %button.btn.btn-secondary.btn-sm{data:{dismiss:'modal'}}
           閉じる

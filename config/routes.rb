@@ -8,9 +8,6 @@ Rails.application.routes.draw do
   resource :family, only: :show
   resources :bodies, except: :show do
     resources :notes
-    collection do
-      get 'select'
-    end
   end
 
   ActiveAdmin.routes(self)

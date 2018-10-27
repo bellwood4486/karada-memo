@@ -18,13 +18,11 @@ module ApplicationHelper
     if bodies.one?
       path = new_body_note_path(bodies.first)
       remote = false
+      link_to fa_icon('edit', text: 'メモする'), path, remote: remote,
+              class: 'nav-link btn btn-primary text-light', role: 'button'
     else
-      path = select_bodies_path
-      remote = true
-    end
-    link_to path, remote: remote,
-                  class: 'nav-link btn btn-primary text-light', role: 'button' do
-      fa_icon 'edit', text: 'メモする'
+      link_to fa_icon('edit', text: 'メモする'), '#bodySelectionsModal', data: { toggle: 'modal' },
+              class: 'nav-link btn btn-primary text-light', role: 'button'
     end
   end
 end

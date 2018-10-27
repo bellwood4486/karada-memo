@@ -52,3 +52,16 @@ isOnPage = (controller, action) ->
   selector += "[data-action='#{action}']" if action?
   document.querySelectorAll(selector).length > 0
 
+document.addEventListener 'turbolinks:load', ->
+  bodyNote = document.getElementById('bodySelection')
+  bodyNote.addEventListener 'change', ->
+# Bootstrapのモーダルのhideが完了する前に、Turbolinksで遷移すると、
+# Turbolinksのキャッシュにモーダルが残る場合があるため、完了してから遷移させる。
+# (Turbolinksを使わない手段もあるが遷移に時間がかかるため採用していない)
+    $('#bodySelectionsModal').on 'hidden.bs.modal', ->
+      Turbolinks.visit bodyNote.value, action: 'replace'
+      return
+    $('#bodySelectionsModal').modal 'hide'
+    return
+  return
+
