@@ -12,7 +12,7 @@
         %tr
           %th{scope: 'col'} ニックネーム
       %tbody
-        - @family.members.each do |member|
+        - @family.members.order(:nickname).each do |member|
           %tr
             %td{scope: 'row'}= member.nickname
 
@@ -31,11 +31,11 @@
             %th{scope: 'col'} 招待日時
             %th{scope: 'col'} 操作
         %tbody
-          - @family.invitees.each do |member|
+          - @family.invitees.order(:invitation_sent_at).each do |invitee|
             %tr
-              %th{scope: 'row'}= member.email
-              %td= member.invitation_sent_at
-              %td= link_to 'キャンセル', member, method: :delete,
+              %th{scope: 'row'}= invitee.email
+              %td= invitee.invitation_sent_at
+              %td= link_to 'キャンセル', invitee, method: :delete,
                 data: { confirm: 'よろしいですか？' }
       %hr
 
@@ -48,7 +48,7 @@
           %th{scope: 'col'} メモの数
           %th{scope: 'col'} 操作
       %tbody
-        - @family.bodies.each do |body|
+        - @family.bodies.order(:nickname).each do |body|
           %tr
             %td{scope: 'row'}= body.nickname
             %td= body.notes.count

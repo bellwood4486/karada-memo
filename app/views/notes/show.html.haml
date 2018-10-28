@@ -4,12 +4,11 @@
       %h1
         #{@note.noted_at}
         %small
-          = link_to "#{@note.body.nickname}さん", body_path(@note.body)
-          のメモ
+          = link_to "#{@note.body.nickname}さんのメモ", body_notes_path(@note.body)
 .row
   .col
     %img.img-fluid{src: 'http://placehold.it/700x400', alt: ''}
   .col
     = simple_format @note.detail
-    = link_to '編集', edit_note_path(@note), class: 'btn btn-primary'
+    = link_to '編集', edit_body_note_path(@note.body, @note), class: 'btn btn-primary'
 

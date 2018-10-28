@@ -15,11 +15,10 @@
       %ul.navbar-nav
         - if user_signed_in?
           %li.nav-item
-            = link_to notes_path, class: 'nav-link' do
+            = link_to bodies_path, class: 'nav-link' do
               = fa_icon 'sticky-note', text: 'メモを見る'
           %li.nav-item
-            =link_to new_note_path, class: 'nav-link' do
-              = fa_icon 'edit', text: 'メモする'
+            = new_note_header_link(current_user.family.bodies)
           %li.nav-item.dropdown
             %a#navbar-dropdown.nav-link.dropdown-toggle{href: '#', 'data-toggle': 'dropdown', role: 'button', 'aria-haspopup': 'true', 'aria-expanded': 'false'}
               = current_user.nickname
@@ -34,3 +33,5 @@
         - else
           %li.nav-item
             = link_to 'ログイン', new_user_session_path, class: 'nav-link'
+
+#bodySelectionsModalArea

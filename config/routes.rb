@@ -6,8 +6,12 @@ Rails.application.routes.draw do
   }
   resources :users, only: :destroy
   resource :family, only: :show
-  resources :bodies, except: :index
-  resources :notes
+  resources :bodies, except: :show do
+    resources :notes
+    collection do
+      get 'select'
+    end
+  end
 
   ActiveAdmin.routes(self)
 end

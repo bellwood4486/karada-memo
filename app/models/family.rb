@@ -1,8 +1,8 @@
 class Family < ApplicationRecord
   has_many :users, dependent: :destroy
-  has_many :members, -> { User.joined_to_family },
+  has_many :members, -> { joined_to_family },
            class_name: 'User'
-  has_many :invitees, -> { User.invited_to_family },
+  has_many :invitees, -> { invited_to_family },
            class_name: 'User'
   has_many :bodies, dependent: :destroy
   has_many :notes, through: :bodies

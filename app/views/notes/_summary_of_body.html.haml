@@ -1,6 +1,0 @@
-.row
-  .col
-    %h3= link_to "#{body.nickname} (#{body.notes.size}メモ)", body
-    .row
-      = (render partial: 'thumbnail', collection: body.notes.latest(NotesHelper::SUMMARY_NOTES_SIZE), as: :note) || (render 'no_notes')
-    %p.text-right= link_to '続きを見る...', body if body.notes.size > NotesHelper::SUMMARY_NOTES_SIZE

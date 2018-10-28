@@ -1,7 +1,8 @@
-= simple_form_for @note do |f|
-  -# :body_idはモデル未定義の値であるため、明示的にrequired:trueを指定して必須であること示す
-  = f.input :body_id, required: true, collection: current_user.family.bodies,
-    label_method: :nickname, value_method: :id, prompt: true
+= simple_form_for [@body, @note] do |f|
+  - if @note.persisted?
+    -# 選択肢の先頭に空欄選択が表示されるのを防ぐために、prompt: true を指定している
+    = f.input :body_id, required: true,
+      collection: current_user.family.bodies, label_method: :nickname, value_method: :id, prompt: true
   = f.input :noted_at, html5: true
   = f.input :detail, hint: "#{Note::DETAIL_LENGTH_MAXIMUM}文字まで入力できます",
     input_html: {rows: 10}

@@ -1,0 +1,20 @@
+'use strict'
+
+{
+  document.getElementById('bodySelectionsModalArea').innerHTML =
+    "<%= j render 'select_modal' %>"
+
+  const bodyNote = document.getElementById('bodySelection')
+  bodyNote.addEventListener('change', function () {
+    // Bootstrapのモーダルのhideが完了する前に、Turbolinksで遷移すると、
+    // Turbolinksのキャッシュにモーダルが残る場合があるため、完了してから遷移させる。
+    // (Turbolinksを使わない手段もあるが遷移に時間がかかるため採用していない)
+    $('#bodySelectionsModal').on('hidden.bs.modal', function () {
+      Turbolinks.visit(bodyNote.value, {action: 'replace'})
+    })
+    $('#bodySelectionsModal').modal('hide')
+  })
+
+  $('#bodySelectionsModal').modal('show')
+}
+

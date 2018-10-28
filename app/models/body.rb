@@ -9,6 +9,6 @@ class Body < ApplicationRecord
   end
 
   def years_noted
-    notes.select(:noted_at).group_by { |n| n.noted_at.year }.keys
+    notes.select(:noted_at).group_by { |n| n.noted_at.year }.keys.sort
   end
 end

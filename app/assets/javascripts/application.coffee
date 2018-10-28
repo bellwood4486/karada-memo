@@ -17,7 +17,7 @@
 #= require popper
 #= require bootstrap-sprockets
 #= require_self
-#= require bodies
+#= require notes
 
 
 # =====================================

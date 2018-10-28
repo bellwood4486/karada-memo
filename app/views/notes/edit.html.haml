@@ -10,4 +10,4 @@
     %h3
       メモの削除
     %p
-      = button_to '削除する', note_path(@note), data: { confirm: '本当によろしいですか？' }, method: :delete, class: 'btn btn-danger'
+      = button_to '削除する', [@note.body, @note], data: { confirm: '本当によろしいですか？' }, method: :delete, class: 'btn btn-danger'

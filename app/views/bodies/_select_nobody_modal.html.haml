@@ -1,0 +1,10 @@
+#noBodyModal.modal.fade{tabindex: '-1', role: 'dialog',
+   aria: {labelledby: 'noBodyModalLabel', hidden: true}}
+  .modal-dialog{role: 'document'}
+    .modal-content
+      .modal-body
+        -# モーダルダイアログがTrubolinksのキャッシュに残るのを防ぐため、ここだけ無効化する
+        メモするには事前に#{link_to('こちら', family_path, data: { turbolinks: false })}から、からだを作成してください。
+      .modal-footer
+        %button.btn.btn-secondary.btn-sm{data:{dismiss:'modal'}}
+          閉じる

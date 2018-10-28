@@ -1,12 +1,10 @@
 class Note < ApplicationRecord
   DETAIL_LENGTH_MAXIMUM = 1000
   paginates_per 6
-
   belongs_to :body
   attribute :noted_at, :datetime, default: -> { Time.current }
   validates :detail, length: { maximum: DETAIL_LENGTH_MAXIMUM }
   validates :noted_at, presence: true
-
   default_scope { order(noted_at: :desc) }
 
   scope :noted_in, ->(year) do
@@ -16,6 +14,6 @@ class Note < ApplicationRecord
   end
 
   scope :latest, ->(count) do
-    first(count)
+    reorder(noted_at: :desc).first(count)
   end
 end

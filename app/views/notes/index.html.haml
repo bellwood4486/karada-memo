@@ -2,5 +2,24 @@
   .col
     .page-header
       %h1
-        最新のメモ
-= render partial: 'summary_of_body', collection: current_user.family.bodies, as: :body
+        #{@body.nickname}さんのからだメモ
+
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light.border.rounded.mb-3
+  .container-fluid
+    .collapse.navbar-collapse
+      .form-inline.mr-auto
+        = label_tag 'year', '記録日', class: 'mr-lg-1'
+        = year_filter_select_tag(@body, @year, class: 'form-control')
+      %ul.navbar-nav
+        %li.nav-item
+          = link_to new_body_note_path(@body), class: 'nav-link' do
+            = fa_icon :plus, text: 'メモを追加する'
+
+- if @notes.empty?
+  .row
+    = render 'shared/no_notes'
+- else
+  .row
+    = (render partial: 'shared/note_thumbnail', collection: @notes, as: :note)
+    .mx-auto
+      = paginate @notes

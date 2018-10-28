@@ -1,0 +1,17 @@
+#bodySelectionsModal.modal.fade{tabindex: '-1', role: 'dialog',
+   aria: {labelledby: 'bodySelectionsModalLabel', hidden: true}}
+  .modal-dialog{role: 'document'}
+    .modal-content
+      .modal-header
+        %h5#bodySelectionsModalLabel.modal-title
+          どのからだにメモしますか？
+        %button.close{type: 'button', 'data-dismiss': 'modal', 'aria-label': 'Close'}
+          %span{'aria-hidden': true}
+            &times;
+      .modal-body
+        .form
+          .form-group
+            = body_select_tag @bodies, prompt: '選択してください', class: 'form-control'
+      .modal-footer
+        %button.btn.btn-secondary.btn-sm{data:{dismiss:'modal'}}
+          閉じる
