@@ -1,7 +1,7 @@
 .col-md-4
   .card.mb-3
     .card-header= link_to note.noted_at, [note.body, note]
-    %img.img-fluid{src: 'http://placehold.it/700x400', alt: ''}
+    = image_tag note.picture.url, class: 'card-img-middle' if note.picture?
     .card-body
       .card-text
         %p= truncate(sanitize(note.detail), length: 100)
