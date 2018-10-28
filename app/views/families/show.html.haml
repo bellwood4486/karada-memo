@@ -1,0 +1,58 @@
+.row.justify-content-center
+  .col-6
+    .page-header
+      %h1
+        家族設定
+        %small
+          #{current_user.nickname}さん
+    %h3
+      家族一覧
+    %table.table.table-striped.table-hover
+      %thead
+        %tr
+          %th{scope: 'col'} ニックネーム
+      %tbody
+        - @family.members.order(:nickname).each do |member|
+          %tr
+            %td{scope: 'row'}= member.nickname
+
+    = link_to new_user_invitation_path do
+      = fa_icon :plus, text: '家族を招待する'
+
+    %hr
+
+    - if @family.invitee?
+      %h5
+        現在招待中の方
+      %table.table.table-striped.table-hover
+        %thead
+          %tr
+            %th{scope: 'col'} メールアドレス
+            %th{scope: 'col'} 招待日時
+            %th{scope: 'col'} 操作
+        %tbody
+          - @family.invitees.order(:invitation_sent_at).each do |invitee|
+            %tr
+              %th{scope: 'row'}= invitee.email
+              %td= invitee.invitation_sent_at
+              %td= link_to 'キャンセル', invitee, method: :delete,
+                data: { confirm: 'よろしいですか？' }
+      %hr
+
+    %h3
+      からだ一覧
+    %table.table.table-striped.table-hover
+      %thead
+        %tr
+          %th{scope: 'col'} ニックネーム
+          %th{scope: 'col'} メモの数
+          %th{scope: 'col'} 操作
+      %tbody
+        - @family.bodies.order(:nickname).each do |body|
+          %tr
+            %td{scope: 'row'}= body.nickname
+            %td= body.notes.count
+            %td= link_to '編集', edit_body_path(body)
+
+    = link_to new_body_path do
+      = fa_icon :plus, text: 'からだを追加する'

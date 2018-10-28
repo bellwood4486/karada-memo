@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    attributes:
+      body:
+        nickname: "ニックネーム"
+      note:
+        body_id: "からだ"
+        noted_at: "記録日時"
+        detail: "詳細"

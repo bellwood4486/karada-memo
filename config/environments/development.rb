@@ -35,6 +35,10 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.perform_deliveries = true
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -58,4 +62,12 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  # タイムゾーンの設定(開発環境用)
+  # 開発PCは日本国内にあることを想定しているのためアプリケーションのタイムゾーンは日本にする。
+  config.time_zone = 'Asia/Tokyo'
+  # PostgreSQLのinitdbで設置したデータベースではシステムのタイムゾーンが使われるため、
+  # こちらは:localを指定する。
+  # 参照：https://www.postgresql.jp/document/10/html/app-initdb.html
+  config.active_record.default_timezone = :local
 end
