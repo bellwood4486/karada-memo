@@ -27,7 +27,9 @@ FactoryBot.define do
 
       after(:build) do |family, evaluator|
         1.upto(evaluator.invitee_count) do |i|
-          User.invite!(email: "invitee#{i}@example.com", family: family) do |u|
+          User.invite!(email: "invitee#{i}@example.com",
+                       nickname: "invitee#{i}",
+                       family: family) do |u|
             u.skip_invitation = true
           end
         end

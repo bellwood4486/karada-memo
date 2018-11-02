@@ -7,8 +7,11 @@
           = link_to "#{@note.body.nickname}さんのメモ", body_notes_path(@note.body)
 .row
   .col
-    %img.img-fluid{src: 'http://placehold.it/700x400', alt: ''}
+    - if @note.picture?
+      = image_tag @note.picture.url, class: 'img-fluid'
+    - else
+      .card.card-body.bg-light.mb-3
+        画像なし
   .col
     = simple_format @note.detail
     = link_to '編集', edit_body_note_path(@note.body, @note), class: 'btn btn-primary'
-

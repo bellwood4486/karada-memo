@@ -7,3 +7,5 @@ ja:
         body_id: "からだ"
         noted_at: "記録日時"
         detail: "詳細"
+        picture: "記録写真"
+        remove_picture: "記録写真を削除する"
