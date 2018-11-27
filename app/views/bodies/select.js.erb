@@ -4,6 +4,7 @@
   document.getElementById('bodySelectionsModalArea').innerHTML =
     "<%= j render 'select_modal' %>"
 
+  // がんばってるね。もっとシンプルに解決する方法がありそう
   const bodyNote = document.getElementById('bodySelection')
   bodyNote.addEventListener('change', function () {
     // Bootstrapのモーダルのhideが完了する前に、Turbolinksで遷移すると、

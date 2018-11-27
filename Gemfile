@@ -25,7 +25,6 @@ gem 'mini_magick'
 gem 'pg'
 gem 'puma', '~> 3.11'
 gem 'pundit'
-gem 'rack-dev-mark'
 gem 'rails-i18n', '~> 5.1'
 gem 'rolify'
 gem 'sass-rails', '~> 5.0'
@@ -41,6 +40,10 @@ group :development, :test do
   gem 'license_finder'
   gem 'rspec-rails'
   gem 'spring-commands-rspec'
+end
+
+group :development, :staging do
+  gem 'rack-dev-mark'
 end
 
 group :development do

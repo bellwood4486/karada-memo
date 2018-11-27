@@ -11,8 +11,10 @@ class Family < ApplicationRecord
     users.any?
   end
 
+  # def has_member? でよいのでは
   def member?
-    members.any?
+    # members.exists? # EXISTS
+    members.any? # Relation members > array > any?  Arrayのメソッドを呼んでる可能性ある (members.present? とかも同じ)
   end
 
   def invitee?
