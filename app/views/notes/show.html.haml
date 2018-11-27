@@ -4,7 +4,7 @@
       %h1
         #{@note.noted_at}
         %small
-          = link_to "#{@note.body.nickname}さんのメモ", body_notes_path(@note.body)
+          = link_to "#{@body.nickname}さんのメモ", body_notes_path(@body)
 .row
   .col
     - if @note.picture?
@@ -14,4 +14,4 @@
         画像なし
   .col
     = simple_format @note.detail
-    = link_to '編集', edit_body_note_path(@note.body, @note), class: 'btn btn-primary'
+    = link_to '編集', edit_body_note_path(@body, @note), class: 'btn btn-primary'

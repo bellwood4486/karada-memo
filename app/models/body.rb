@@ -16,6 +16,12 @@ class Body < ApplicationRecord
     notes.select(:noted_at).group_by { |n| n.noted_at.year }.keys.sort
 
     # 別解
+    # notes.select("date_part('year', notes.noted_at)::integer AS year").distinct.map(&:year)
+
+    # 別解
+    # notes.distinct.pluck("date_part('year', notes.noted_at)::integer")
+
+    # 別解
     # notes.pluck(:noted_at).map(&:year).uniq
   end
 end
