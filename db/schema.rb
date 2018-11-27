@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2018_09_12_085130) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "nickname", null: false
+    t.string "nickname"
     t.bigint "family_id", null: false
     t.string "invitation_token"
     t.datetime "invitation_created_at"
