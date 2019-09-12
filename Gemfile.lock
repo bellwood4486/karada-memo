@@ -114,10 +114,10 @@ GEM
     concurrent-ruby (1.1.5)
     crass (1.0.4)
     debug_inspector (0.0.3)
-    devise (4.6.0)
+    devise (4.7.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
-      railties (>= 4.1.0, < 6.0)
+      railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
     devise-i18n (1.6.4)
@@ -277,7 +277,7 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.0.4)
+    rails-html-sanitizer (1.2.0)
       loofah (~> 2.2, >= 2.2.2)
     rails-i18n (5.1.1)
       i18n (>= 0.7, < 2)
@@ -412,7 +412,7 @@ DEPENDENCIES
   carrierwave-i18n
   chromedriver-helper
   coffee-rails (~> 4.2)
-  devise (~> 4.6)
+  devise (~> 4.7)
   devise-i18n
   devise_invitable (~> 1.7.0)
   factory_bot_rails
