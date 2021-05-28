@@ -1,7 +1,7 @@
 .col-md-4
   .card.mb-3
     .card-header= link_to note.noted_at, [note.body, note]
-    = image_tag note.picture.url, class: 'card-img-middle' if note.picture?
     .card-body
+      = image_tag note.picture.url, class: 'card-img-middle' if note.picture?
       .card-text
         %p= truncate(sanitize(note.detail), length: 100)

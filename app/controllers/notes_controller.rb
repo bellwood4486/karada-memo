@@ -1,12 +1,12 @@
 class NotesController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_body
   before_action :set_note, only: %i[show edit update destroy]
   before_action :set_year, only: :index
   before_action :set_js_variables_for_form, only: %i[new edit]
 
   def index
-    @notes = @body.notes.order(noted_at: :desc).noted_in(@year).page params[:page]
+    scope = @body.notes.order(noted_at: :desc).page params[:page]
+    @notes = @year ? scope.noted_in(@year) : scope
   end
 
   def show
@@ -29,6 +29,8 @@ class NotesController < ApplicationController
   end
 
   def update
+    # 紐付けるbodyを置き換えたいパターンがある
+    # が、それがためにコードが複雑になっちゃってる
     @note.body = find_my_own_body(params[:note][:body_id])
     if @note.update(note_params)
       redirect_to [@note.body, @note], success: 'メモを更新しました'

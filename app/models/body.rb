@@ -9,6 +9,19 @@ class Body < ApplicationRecord
   end
 
   def years_noted
+    # このBodyに何年のnoteがあるか
+    # postgres側でユニークにするのはどう？ (YEARを取り出してユニークにする)
+    # こんなイメージ
+    # notes.select("date_part('year', notes.noted_at)")
     notes.select(:noted_at).group_by { |n| n.noted_at.year }.keys.sort
+
+    # 別解
+    # notes.select("date_part('year', notes.noted_at)::integer AS year").distinct.map(&:year)
+
+    # 別解
+    # notes.distinct.pluck("date_part('year', notes.noted_at)::integer")
+
+    # 別解
+    # notes.pluck(:noted_at).map(&:year).uniq
   end
 end

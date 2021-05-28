@@ -14,6 +14,7 @@ module ApplicationHelper
     html.html_safe
   end
 
+  # viewをレンダーした段階でmodalも書いておけば remote とか、BodiesController#select なくせそう
   def new_note_header_link(bodies)
     if bodies.one?
       path = new_body_note_path(bodies.first)

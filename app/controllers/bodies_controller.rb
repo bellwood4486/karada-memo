@@ -1,5 +1,4 @@
 class BodiesController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_body, only: %i[show edit update destroy]
   before_action :set_bodies, only: %i[index select]
 
@@ -46,6 +45,7 @@ class BodiesController < ApplicationController
   end
 
   def set_bodies
+    # orderあってもよいね
     @bodies = current_user.family.bodies
   end
 

@@ -7,8 +7,10 @@ class Note < ApplicationRecord
   validates :detail, length: { maximum: DETAIL_LENGTH_MAXIMUM }
   validates :noted_at, presence: true
 
+  # こう呼びたいね
+  # year ? body.notes.noted_in : body.notes
   scope :noted_in, ->(year) do
-    return if year.blank?
+    return if year.blank? # body.notes.noted_in よんだとき、全部変える
     date = Time.zone.local(year)
     where(noted_at: (date.beginning_of_year..date.end_of_year))
   end
